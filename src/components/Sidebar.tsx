@@ -23,6 +23,8 @@ import { useState } from "react";
 const Sidebar = () => {
   const [showBank, setShowBank] = useState(false);
 
+  const [shuffledTerms] = useState(shuffle(terms));
+
   const { score, graded, showAnswers } = useSelector(selectQuiz);
   const dispach = useAppDispatch();
 
@@ -56,7 +58,7 @@ const Sidebar = () => {
       {showBank && (
         <Paper withBorder p="md">
           <List>
-            {shuffle(terms).map((t) => (
+            {shuffledTerms.map((t) => (
               <List.Item key={t}>{t}</List.Item>
             ))}
           </List>
